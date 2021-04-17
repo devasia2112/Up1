@@ -8,19 +8,10 @@ It has the ability to view images, text with syntax highlighting, short videos, 
 
 Public Server
 ---
-We currently run a public, free to use server at https://up1.ca.
+There was a public, free to use server at https://up1.ca.  
+This demo instance is no longer available or being maintained. However, there are several public hosts which use up1. An online search should turn up some results.
 
-Example image: https://up1.ca/#hsd2mdSuIkzTUR6saZpn1Q - [(source)](https://www.ashleymills.com/node/8). *Hint: Try double-clicking on the image, and dragging around the image to zoom in and out, RES-style!*
-
-Example text paste: https://up1.ca/#_H7Wy9atfl2CW_cYx6Xh9A - [(source)](http://www.publicdomainpoems.com/ocaptainmycaptain.html)
-
-Example short video: https://up1.ca/#55s3dQnPjtcgstvspdYT5g - [(source)](https://youtu.be/O6Xo21L0ybE)
-
-Example download file: https://up1.ca/#Nmo7tW7Qi8ga0UORVZ-zUw - [(source)](https://github.com/Upload/ShareX/releases/tag/v9.10.1)
-
-This server is open to all users, so feel free to upload your own files.
-
-####Client Utilities:
+#### Client Utilities:
 * [ShareX](https://github.com/ShareX/ShareX), a popular screenshot and image uploader, now merged with Up1 support
 * [upclient](https://github.com/Upload/upclient), a command-line tool for uploading to Up1 servers
 
@@ -30,13 +21,16 @@ To install and run the server with default settings:
 
     apt-get install nodejs
     git clone https://github.com/Upload/Up1
-    cd upload/server
+    cd Up1
+    cp server/server.conf.example server/server.conf
+    cp client/config.js.example client/config.js
+    cd server
     npm install
     node server.js
 
 Server configuration is done through the [`server.conf`](https://github.com/Upload/Up1/server.conf.example) file. For a quick start, simply move `server.conf.example` to `server.conf`.
 
-`listen` is an `address:port`-formatted string, where either one are optional. Some examples include `":9000"` to listen on any interface, port 9000; `"1.2.3.4"` to listen on localhost port 80; `"1.1.1.1:8080"` to listen on 1.1.1.1 port 8080; or even `""` to listen on any interface, port 80.
+`listen` is an `address:port`-formatted string, where either one are optional. Some examples include `":9000"` to listen on any interface, port 9000; `"127.0.0.1"` to listen on localhost port 80; `"1.1.1.1:8080"` to listen on 1.1.1.1 port 8080; or even `""` to listen on any interface, port 80.
 
 `api_key` is a very basic security measure, requiring any client making an upload to know this key. This doesn't seem very useful and should be revamped; replace it with HTTP auth maybe?
 
@@ -53,7 +47,7 @@ For the web application configuration, a [`config.js.example`](https://github.co
 External Tools
 ---
 
-Currently, there are two external programs adapted to work with Up1: [ShareX](https://github.com/ShareX/ShareX) [(relevant code](https://github.com/ShareX/ShareX/pull/751), and [upclient](https://github.com/Upload/upclient).
+Currently, there are two external programs adapted to work with Up1: [ShareX](https://github.com/ShareX/ShareX) ([relevant code](https://github.com/ShareX/ShareX/pull/751)), and [upclient](https://github.com/Upload/upclient).
 
 ShareX is a popular screenshot tool which supports tons of upload services, not just for images but also for text, video, documents, etc. ShareX includes a service which can send files to any Up1 server. It uses .NET BouncyCastle for the crypto.
 
